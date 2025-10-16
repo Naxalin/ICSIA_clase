@@ -1,0 +1,38 @@
+.lista-productos {
+  display: flex;
+  flex-wrap: wrap;       /* Permite que las tarjetas se acomoden en varias filas */
+  gap: 20px;             /* Espacio entre tarjetas */
+  justify-content: center; /* Centra las tarjetas */
+  padding: 20px;
+}
+
+/* Tarjeta individual */
+.ficha-producto {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 15px;
+  width: 220px;
+  box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+/* Imagen dentro de la ficha */
+.ficha-producto img {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+/* Botón dentro de la ficha */
+.ficha-producto button {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+}
+
+.ficha-producto button:hover {
+  background-color: #0056b3;
+}
