@@ -1,10 +1,10 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-function UserList({ perfiles = [] }) {
+function UserList({ perfiles = [], onSeleccionar }) {
   return (
     <>
-      <section>
+      <section className=''>
         <div className='border bg-light p-30 w-50 mx-auto'>
         <h2 className='text-center py-2'>Lista de Usuarios</h2>
       </div>
@@ -20,7 +20,7 @@ function UserList({ perfiles = [] }) {
         </div>
         <ul className='border rounded-4 list-unstyled'>
           {perfiles.map((perfil) => (
-            <li className='border rounded-3 ps-5 p-2 btn-hover'style={{cursor: 'pointer'}} key={perfil.id}>{perfil.nombre}</li>
+            <li className='border rounded-3 ps-5 p-2 btn-hover'style={{cursor: 'pointer'}} onClick={() => onSeleccionar(perfil.id)} key={perfil.id}>{perfil.nombre}</li>
           ))}
         </ul>
       </div>
