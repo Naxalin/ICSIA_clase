@@ -15,7 +15,7 @@ function ProfileCard({ datos = [], id }) {
   const persona = datos.find(p => p.id === id);
 
   if (!persona) {
-    return <p className="text-center mt-4">Selecciona un usuario para ver su perfil 🕵️‍♂️</p>;
+    return <p className="text-center mt-4">Selecciona un usuario para ver los detalles</p>;
   }
 
   const srcImagen = persona.avatarUrl || '';
