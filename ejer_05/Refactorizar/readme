@@ -1,0 +1,11 @@
+// 4 problemas:
+
+// 1. Donde el Div la Key esta mal puesta ya que tendria que ser Key={index.id}
+// 2. El Map sigue funcionando aunque no coincida nada
+// 3. El input no contiene value lo que proboca que el valor del input no cambie si se borra del estado manteniendose igual
+// 4. Que el allArticles se contenga en la App y no en un archivo que lo almacene 
+
+// ¿Por qué es fundamental el uso de key para el rendimiento y la identidad del elemento en React?
+// Se utiliza para identificar a que Elemento pertenece de una lista y lo que cambia de ese Elemento
+ 
+// https://chimerical-biscuit-5fad64.netlify.app/
