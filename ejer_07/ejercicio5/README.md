@@ -1,0 +1,3 @@
+Pregunta para reflexionar: ¿Qué pasaría si no usaras useCallback para envolver addPost? ¿Por qué el useEffect que depende de addPost se ejecutaría en cada renderizado del componente?
+
+Si no uso useCallback, cada render crea una nueva función addPost. Como useEffect depende de ella, React piensa que cambió y se ejecuta siempre. Con useCallback la función se mantiene igual y el efecto no se dispara cada vez
