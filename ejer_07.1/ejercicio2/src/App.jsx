@@ -1,35 +1,31 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState, useMemo } from "react";
+import SearchInput from "./components/SearchInput";
+import UserList from "./components/UserList";
 
-function App() {
-  const [count, setCount] = useState(0)
+const generateUsers = () =>
+  Array.from({ length: 10000 }, (_, i) => ({
+    id: i,
+    name: `Usuario ${i}`,
+    email: `usuario${i}@mail.com`,
+  }));
+
+export default function App() {
+  console.log("� Render App");
+
+  const [search, setSearch] = useState("");
+  const [users] = useState(generateUsers());
+
+  const filtered = useMemo(() => {
+    return users.filter(u =>
+      u.name.toLowerCase().includes(search.toLowerCase())
+    );
+  }, [users, search]);
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div>
+      <h1>Filtro de Usuarios</h1>
+      <SearchInput value={search} onChange={setSearch} />
+      <UserList users={filtered} />
+    </div>
+  );
 }
-
-export default App

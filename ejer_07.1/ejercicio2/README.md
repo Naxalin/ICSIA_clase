@@ -1,16 +1,15 @@
-# React + Vite
+![alt text](image.png)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- La aplicación va muy lenta ¿Cuáles son sus puntos débiles?
+Cada vez que el usuario escribe una letra en el buscador, se actualiza el estado search.
+Esto provoca que el componente App se vuelva a renderizar completamente, junto con todos sus componentes hijos: SearchInput, UserList y todas las UserCard.
 
-Currently, two official plugins are available:
+¿Ha mejorado la velocidad de la aplicación?
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Sí, la velocidad de la aplicacion aumento, sigue siendo algo lento pero la mejora se nora a antes
 
-## React Compiler
+¿Que cambias has hecho y por que? 
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Se ha utilizado useMemo para evitar que el filtro de los 10.000 usuarios se ejecute en cada render, haciendo que solo se recalculen los resultados cuando cambia el texto de búsqueda. Esto reduce mucho el número de operaciones que se realizan en cada pulsación de tecla.
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+También se ha aplicado memo a los componentes SearchInput, UserList y UserCard para evitar que se rendericen de nuevo si sus props no cambian. Gracias a esto se eliminan muchos renders innecesarios y la aplicación funciona de forma mucho más fluida.
