@@ -1,0 +1,3 @@
+Separar AuthContext y TasksContext es buena idea porque así cada parte de la app solo se re-renderiza cuando realmente lo necesita. Si todo estuviera en un GlobalContext, cada vez que cambia el usuario se re-renderizarían también componentes que solo usan tareas, y eso haría que UserInfo se actualice sin necesidad, afectando el rendimiento.
+
+Cuando cambio de usuario, el AuthContext cambia y eso hace que el componente que muestra la lista se vuelva a renderizar, y por eso también se renderizan todos los TaskItem, aunque las tareas no cambien. Para evitarlo usaría React.memo, pero no basta con envolver el componente: también tengo que asegurarme de que las props no cambien en cada render, usando por ejemplo useCallback para las funciones.
