@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import { lazy, Suspense } from "react";
 
-import RootLayout from "./layouts/RootLayout";
+import RootLayout from "./Layouts/RootLayout";
 import DashboardLayout from "./layouts/DashboardLayout";
 
 import HomePage from "./pages/HomePage";
