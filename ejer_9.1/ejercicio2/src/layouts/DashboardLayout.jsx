@@ -12,7 +12,6 @@ function DashboardLayout() {
         <NavLink to="/dashboard/new">Añadir Tarea</NavLink>
       </nav>
 
-      {/* Aquí es CRUCIAL pasar context */}
       <Outlet context={{ tareas, setTareas }} />
     </div>
   );
